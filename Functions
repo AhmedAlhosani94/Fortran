@@ -46,3 +46,15 @@ real*8 function tri(a, b, c)
 end function tri
 
 !function sq is on the file
+! Function definition to calculate the area of the square
+
+!real*8 function sq(s)
+
+    !implicit none
+    !real, intent(in) :: s
+
+    !print *, "The side of the square is = ", s
+
+    !sq = s*s
+
+!end function sq
