@@ -6,11 +6,11 @@ program area_qt
 
     real*8 :: area  !kind of 8
     character :: fig
-    real*8, external :: tri, sq !declaration of function coming from outside the program
-    real*8 :: a, b, c, s
+    real*8, external :: tri, sq, rect !declaration of function coming from outside the program
+    real*8 :: a, b, c, s, l, w
 
-    print *, "This program calculates the area of square/triangle"
-    print *, "Type s for a square and t for triangle"
+    print *, "This program calculates the area of square/triangle or rect"
+    print *, "Type s for a square, t for triangle, and r for rectangle"
 
     read *, fig
 
@@ -19,9 +19,15 @@ program area_qt
         read *, a, b, c
         area = tri(a, b, c)
         print *, "The area of the triangle is = ", area
-    else if (fig == 's' .or. fig = 'S') then
+    else if(fig == 's' .or. fig == 'S') then
         print *, "enter the sides of the square"
+	read *, s
         area = sq(s)
+        print *, "the area of the square is = ", area
+    else if(fig == 'r' .or. fig == 'R') then
+        print *, "enter the sides of the rectangle"
+	read *, l,w
+        area = rect(l,w)
         print *, "the area of the square is = ", area
     else
         print *, "Error!!! Enter S or T idiot"
@@ -45,16 +51,26 @@ real*8 function tri(a, b, c)
 
 end function tri
 
+real*8 function rect(l,w)
+
+    implicit none
+    real*8, intent(in) :: l,w
+    rect = l*w
+
+    print *, "The sides are: "
+    print *, l, w
+end function rect
+
 !function sq is on the file
 ! Function definition to calculate the area of the square
 
-!real*8 function sq(s)
+real*8 function sq(s)
 
-    !implicit none
-    !real, intent(in) :: s
+    implicit none
+    real*8, intent(in) :: s
 
-    !print *, "The side of the square is = ", s
+    print *, "The side of the square is = ", s
 
-    !sq = s*s
+    sq = s*s
 
-!end function sq
+end function sq
